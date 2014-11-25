@@ -1,0 +1,11 @@
+<div class="container" ng-init="init()">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#/games/create">Create new</a</li>
+  </ul>
+  <ul class="games-list">
+    <li ng-repeat="game in games"><a href="#/games/{{game.id}}">{{game.title}}</a><img ng-src="{{game.url}}"/></li>
+  </ul>
+</div>
+
+<div ng-include="'views/footer.html'">
+</div>

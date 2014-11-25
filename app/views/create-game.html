@@ -1,0 +1,38 @@
+<h3 class="title">New game</h3>
+<div class="body create-new-product" ng-init='init()'>
+  <form class="form-horizontal" name="gameForm" ng-submit="save()">
+  <ul ng-if="errors.length > 0">
+    <li ng-repeat="error in errors">{{error.result}}{{error.code}}{{error.details}}</li>
+  </ul>
+    <div class="form-group">
+        <label class="col-sm-3" for="name">Title:</label>
+        <div class="col-sm-9">
+            <input class="form-control" id="title" name="title" type="text" ng-model="game.title" ng-minlength="5"/>
+            <div class="error" ng-if="gameForm.title.$dirty && gameForm.title.$invalid">
+              <small>Invalid title</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3" for="type">Url:</label>
+        <div class="col-sm-9">
+            <input class="form-control" id="url" name="url" type="url" ng-model="game.url"/>
+            <div class="error" ng-if="gameForm.url.$dirty && gameForm.url.$invalid">
+              <small>Invalid url</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3" for="type">Version:</label>
+        <div class="col-sm-9">
+            <input class="form-control" id="version" name="version" type="text" ng-model="game.version" ng-pattern="/\d+\.\d+/"/>
+            <div class="error" ng-if="gameForm.version.$dirty && gameForm.version.$invalid">
+              <small>Invalid version</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <input type="submit">
+    </div>
+  </form>
+</div>
