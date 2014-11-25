@@ -10,6 +10,7 @@
 angular.module('lesson1App')
   .factory('games', ['$q', '$resource', 'uuid4', 'lodash', function ($q, $resource, uuid4, lodash) {
     // var gamesResource = $resource('./games.json', {query: {method: 'GET', isArray: true}});
+    console.log("Games Service");
     var items = [
       {
         "id": "9b0824ff-f789-47bd-bd5b-a683ad4530ba",

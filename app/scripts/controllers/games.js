@@ -9,6 +9,7 @@
  */
 angular.module('lesson1App')
   .controller('GamesCtrl', ['$scope', 'games', function ($scope, games) {
+  	console.log("GamesCtrl");
     $scope.init = function () {
       $scope.games = games.query();
     };

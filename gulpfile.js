@@ -5,7 +5,9 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	compass = require('gulp-compass'),
-	clean = require('gulp-clean');
+	clean = require('gulp-clean'),
+	browserSync = require('browser-sync');
+
 
 var vendorFiles = [
 				"bower_components/angular/angular.js",
@@ -54,6 +56,14 @@ gulp.task('browserify', function() {
 	.pipe(gulp.dest('dist/js'));
 });
 
+gulp.task('serve', function() {
+    browserSync({
+        server: {
+            baseDir: "./dist"
+        }
+    });
+});
+
 gulp.task('vendor', function(){
 	gulp.src(vendorFiles)
 		.pipe(concat('vendor.js'))
@@ -73,6 +83,15 @@ gulp.task('compass', function() {
 });
 
 gulp.task('build', function(){
+	gulp.src(['./app/*.html', './app/*.json'])
+		.pipe(gulp.dest('dist'));
+
+	gulp.src('./app/views/*.html')
+		.pipe(gulp.dest('dist/views'));
+
+	gulp.src('./app/images/*.*')
+		.pipe(gulp.dest('dist/images'));
+
 	gulp.run(['vendor', 'compass', 'browserify']);
 });
 
@@ -85,5 +104,5 @@ gulp.task('watch', ['lint'], function() {
 });
 
 gulp.task('default', function(){
-	gulp.run(['build', 'watch'])
+	gulp.run(['build', 'serve'])
 });
