@@ -2,8 +2,6 @@ ng-learn
 ========
 To start project you need:
 
-npm install
-===========
-bower install
-===========
-gulp
+1. npm install
+2. bower install
+3. gulp
